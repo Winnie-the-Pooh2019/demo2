@@ -37,9 +37,18 @@ class PersonDao {
         Person(name = "alesha", phone = "899789798"),
     )
 
-    fun getAll(): List<Person> = people.toList()
+    fun findAll(): List<Person> = people.toList()
 
-    fun getPersonById(id: String) = people.find { it.id == UUID.fromString(id) }
+    fun save(person: Person): Person {
+        people.add(person)
+        return person
+    }
+
+    fun findPersonById(id: UUID) = people.find { it.id == id }
+
+    fun delete(person: Person) {
+        people.remove(person)
+    }
 
     fun getPage(page: Int, pageSize: Int): Person.Page {
         val _people = people.filterIndexed { index, _ ->
