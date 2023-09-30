@@ -1,6 +1,13 @@
+CONTAINER:
+  USERNAME: postgres
+  PASSWORD: 1234
+  URL: jdbc:tc:postgresql:15:///tasks-test
+
 spring:
   datasource:
-    own:
-      username: ${CONTAINER.USERNAME}
-      password: ${CONTAINER.PASSWORD}
-      url: ${CONTAINER.URL}
+    username: ${CONTAINER.USERNAME}
+    password: ${CONTAINER.PASSWORD}
+    url: ${CONTAINER.URL}
+  sql:
+    init:
+      mode: always

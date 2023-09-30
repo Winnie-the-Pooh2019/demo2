@@ -22,15 +22,16 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-//    implementation("io.github.wimdeblauwe:htmx-spring-boot")
-//    implementation("io.github.wimdeblauwe:htmx-spring-boot-thymeleaf")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
+    runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:postgresql:1.17.6")
     testImplementation("org.testcontainers:junit-jupiter:1.17.6")
+    testImplementation("io.rest-assured:rest-assured:4.4.0")
 }
 
 tasks.withType<KotlinCompile> {
