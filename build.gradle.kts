@@ -30,8 +30,17 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:postgresql:1.17.6")
-    testImplementation("org.testcontainers:junit-jupiter:1.17.6")
-    testImplementation("io.rest-assured:rest-assured:4.4.0")
+    // https://mvnrepository.com/artifact/org.testcontainers/testcontainers
+    testImplementation("org.testcontainers:testcontainers:1.19.0")
+
+    // https://mvnrepository.com/artifact/org.testcontainers/junit-jupiter
+    testImplementation("org.testcontainers:junit-jupiter:1.19.0")
+
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    testImplementation("io.rest-assured:rest-assured:5.3.2")
+
+    // https://mvnrepository.com/artifact/org.apache.groovy/groovy-all
+    implementation("org.apache.groovy:groovy-all:4.0.15")
 }
 
 tasks.withType<KotlinCompile> {

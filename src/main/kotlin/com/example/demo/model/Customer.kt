@@ -1,19 +1,20 @@
 package com.example.demo.model
 
-import jakarta.persistence.Column
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import java.util.*
 
-data class Customer(
+@Entity
+@Table(name = "customers")
+class Customer(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private val id: UUID? = null,
 
     @Column(nullable = false)
-    private val name: String,
+    private val name: String? = null,
 
     @Column(nullable = false, unique = true)
-    private val email: String
-)
+    private val email: String? = null,
+) {
+    constructor() : this(null, null, null)
+}

@@ -13,10 +13,14 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.server.LocalServerPort
+import org.springframework.context.annotation.Profile
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
+import org.springframework.test.context.jdbc.Sql
 import org.testcontainers.containers.PostgreSQLContainer
 
+@Sql("classpath:schema.sql")
+@Profile("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CustomerControllerTest(
     @LocalServerPort
@@ -36,19 +40,19 @@ class CustomerControllerTest(
         val customers = listOf(
             Customer(
                 name = "John",
-                email = "Doe"
+                email = "john@localhost.com"
             ),
             Customer(
                 name = "Jane",
-                email = "Doe"
+                email = "jane@localhost.com"
             )
         )
 
         customerRepository.saveAll(customers)
-
+        println("SYSTEM PORT IS $port")
         given()
             .contentType(ContentType.JSON)
-            .`when`()["/api/customers"]
+            .`when`()["/customers"]
             .then()
             .statusCode(200)
     }
